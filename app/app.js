@@ -5,7 +5,8 @@ import {
   Link,
   IndexRoute,
   hashHistory,
-  browserHistory } from 'react-router'
+  browserHistory,
+  IndexLink } from 'react-router'
 
 class App extends Component {
   render () {
@@ -30,8 +31,8 @@ const Home = () => <h1>Hello from Home!</h1>;
 
 const Address = (props) => <div>
   <br />
-  <Link to='/address'>Twitter Feed</Link>&nbsp;
-  <Link to='/address/instagram'>Instagram Feed</Link>
+  <Link to='/address' onlyActiveOnIndex activeStyle={{color:'#96f28a'}}>Twitter Feed</Link>&nbsp;
+  <Link to='/address/instagram' activeStyle={{color:'#96f28a'}}>Instagram Feed</Link>	&copy;
   <h1>We are located at 1984 SD St.</h1>
   {props.children}
 </div>;
@@ -45,8 +46,9 @@ const NotFound = () => (
 
 const Nav = () => (
   <div>
-    <Link to='/'>Home</Link>&nbsp;
-    <Link to='/address'>Address</Link>&reg;
+    <Link to='/' onlyActiveOnIndex activeStyle={{color:'#53acff'}}>Home</Link>&nbsp;
+    <Link to='/address' activeStyle={{color:'#53acff'}}>Address</Link>&reg;
+    <Link activeStyle={{color:'#53acff'}} to='/about'>About</Link>
   </div>
 );
 
@@ -62,3 +64,16 @@ const Instagram = () => <h3>Instagram Feed</h3>;
 const TwitterFeed = () => <h3>Twitter Feed</h3>;
 
 export default App
+
+
+// IndexLink
+
+// An <IndexLink> is like a <Link>, except it is only active when the current route is exactly the linked route. It is equivalent to<Link> with the onlyActiveOnIndex prop set.
+
+// const Nav = () => (
+//   <div>
+//     <IndexLink activeStyle={{color:'#53acff'}} to='/'>Home</IndexLink>&nbsp;
+//     <IndexLink activeStyle={{color:'#53acff'}} to='/address'>Address</IndexLink>&nbsp;
+//     <IndexLink activeStyle={{color:'#53acff'}} to='/about'>About</IndexLink>
+//   </div>
+// )
