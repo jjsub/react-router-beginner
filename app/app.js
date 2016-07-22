@@ -18,6 +18,9 @@ class App extends Component {
             <IndexRoute component={TwitterFeed} />
             <Route path='instagram' component={Instagram} />
           </Route>
+          <Route path='/namedComponent' component={NamedComponents}>
+            <IndexRoute components={{ title: Title, subTitle: SubTitle }} />
+          </Route>
           <Route path='*' component={NotFound} />
         </Route>
       </Router>
@@ -46,9 +49,10 @@ const NotFound = () => (
 
 const Nav = () => (
   <div>
-    <Link to='/' onlyActiveOnIndex activeStyle={{color:'#53acff'}}>Home</Link>&nbsp;
-    <Link to='/address' activeStyle={{color:'#53acff'}}>Address</Link>&reg;
-    <Link activeStyle={{color:'#53acff'}} to='/about'>About</Link>
+    <Link to='/' onlyActiveOnIndex activeStyle={{color:'#53acff'}}>Home</Link> &nbsp;
+    <Link to='/address' activeStyle={{color:'#53acff'}}>Address</Link>&reg; &nbsp;
+    <Link activeStyle={{color:'#53acff'}} to='/about'>About</Link> &nbsp;
+    <IndexLink activeStyle={{color:'#53acff'}} to='/namedComponent'>Named Components</IndexLink>
   </div>
 );
 
@@ -62,6 +66,24 @@ const Container = (props) => <div>
 const Instagram = () => <h3>Instagram Feed</h3>;
 
 const TwitterFeed = () => <h3>Twitter Feed</h3>;
+
+// Named Components
+
+const NamedComponents = (props) => (
+  // console.log(props)
+  <div>
+    {props.title}<br />
+    {props.subTitle}
+  </div>
+)
+
+const Title = () => (
+  <h1>Title Component</h1>
+)
+
+const SubTitle = () => (
+  <h1> SubTitle Component</h1>
+)
 
 export default App
 
