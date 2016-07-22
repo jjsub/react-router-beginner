@@ -8,6 +8,8 @@ import {
   browserHistory,
   IndexLink } from 'react-router'
 
+import Instagram  from './components/instagram'
+
 class App extends Component {
   render () {
     return (
@@ -66,7 +68,7 @@ const Container = (props) => <div>
   {props.children}
 </div>
 
-const Instagram = () => <h3>Instagram Feed</h3>;
+// const Instagram = () => <h3>Instagram Feed</h3>;
 
 const TwitterFeed = () => <h3>Twitter Feed</h3>;
 
