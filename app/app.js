@@ -17,7 +17,9 @@ class App extends Component {
           <Route path='/address' component={Address}>
             <IndexRoute component={TwitterFeed} />
             <Route path='instagram' component={Instagram} />
+            <Route path='query' component={Query} />
           </Route>
+          <Route path='/about(/:name)' component={About} />
           <Route path='/namedComponent' component={NamedComponents}>
             <IndexRoute components={{ title: Title, subTitle: SubTitle }} />
           </Route>
@@ -35,7 +37,8 @@ const Home = () => <h1>Hello from Home!</h1>;
 const Address = (props) => <div>
   <br />
   <Link to='/address' onlyActiveOnIndex activeStyle={{color:'#96f28a'}}>Twitter Feed</Link>&nbsp;
-  <Link to='/address/instagram' activeStyle={{color:'#96f28a'}}>Instagram Feed</Link>	&copy;
+  <Link to='/address/instagram' activeStyle={{color:'#96f28a'}}>Instagram Feed</Link>	&copy; &nbsp;
+  <Link activeClassName='active' to={{ pathname: '/address/query', query: { message: 'Hello from Route Query' } }}>Route Query</Link>
   <h1>We are located at 1984 SD St.</h1>
   {props.children}
 </div>;
@@ -83,6 +86,20 @@ const Title = () => (
 
 const SubTitle = () => (
   <h1> SubTitle Component</h1>
+)
+
+const About = (props) => (
+  <div>
+    <h3>Welcome to the About Page</h3>
+    <h2>안녕스 {props.params.name}</h2>
+  </div>
+)
+
+const Query = (props) => (
+  <div>
+    <p> This are Query String Parameters </p>
+    <h2>{props.location.query.message}</h2>
+  </div>
 )
 
 export default App
