@@ -1,5 +1,5 @@
-module.export = {
-  entry: '.app/main.js',
+module.exports = {
+  entry: './app/main.js',
   output: {
     path: './app',
     filename: 'bundle.js'
@@ -10,7 +10,7 @@ module.export = {
     port: 8100
   },
   module: {
-    loader: [
+    loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
